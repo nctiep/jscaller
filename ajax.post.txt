@@ -1,0 +1,6 @@
+<h1>AJAX POST DATA</h1>
+Line 1: POST info 1
+Line 2: POST info 2
+Line 3: POST info 3
+Line 4: POST info 4
+Line 5: POST info 5

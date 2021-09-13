@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h1>Login</h1>
+        
+        <p>Username: <input type="text" id="txtUsername" value=""/></p>
+        <p>Password: <input type="password" id="txtPassword" value=""/></p>
+        <p><button type="button" id="btnLogin">Login</button></p>
+        <p><img src="loading.gif" id="imgLoading"/></p>
+        <p id="contentResult"></p>
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#imgLoading').hide();
+            
+            $('#btnLogin').click(function(){
+                $('#btnLogin').hide();
+                $('#imgLoading').show();
+                
+                var uu = $('#txtUsername').val();
+                var pp = $('#txtPassword').val();
+                if(uu.length==0){
+                    $('#txtUsername').focus();
+                    $('#btnLogin').show();
+                    $('#imgLoading').hide();
+                    return false;
+                }
+                if(pp.length==0){
+                    $('#txtPassword').focus();
+                    $('#btnLogin').show();
+                    $('#imgLoading').hide();
+                    return false;
+                }
+                
+                callAjax({
+                    method: 'post',
+                    url: 'login.php',
+                    data: {username:uu, password:pp},
+                    done: function(response){
+                        $('#btnLogin').show();
+                        $('#imgLoading').hide();
+                        if(response==1){
+                            $('#contentResult').text('Login Success.');
+                        }else{
+                            $('#contentResult').text('Wrong Username or Password');
+                        }
+                    }
+               });
+            });
+            
+        });
+        </script>
+        
+    </body>
+</html>

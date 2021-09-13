@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TEST JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p class="docReady"></p>
+        
+        <hr>
+        
+        <p>
+            <button type="button" id="btnHideText">Hide</button>
+            <button type="button" id="btnShowText">Show + Black + fontsize:20</button>
+            <button type="button" id="btnShowRedText">Show + Red + fontsize:50</button>
+            <button type="button" id="btnShowBlueText">Show + Blue + fontsize:100</button>
+            <button type="button" id="btnToggleText">Toggle</button>
+        </p>
+        
+        <h1>HELLO WORLD</h1>
+        
+        <hr>
+        
+        <p>
+            <button type="button" id="btnHideImg">Hide</button>
+            <button type="button" id="btnShowImg400">Show + width:400</button>
+            <button type="button" id="btnShowImg600">Show + width:600</button>
+            <button type="button" id="btnToggleImg">Toggle</button>
+        </p>
+        
+        <img class="img" src="img2.jpg" width="300"/>
+        <img class="img" src="img1.jpg" width="300"/>
+        
+        <hr>
+        
+        <p>
+            <button type="button" id="btnChangeSelf">Click to change bg-color Self</button>
+            <button type="button" id="btnHideSelf">Click to hide Self</button>
+        </p>
+        
+        <hr>
+        
+        <p>
+            <button type="button" id="btnAjax">Get Content use Ajax</button>
+        </p>
+        <h2 class="ajaxData">AJAX data</h2>
+            
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('.docReady').text('Document Ready: <b>'+this.readyState+'</b>');
+            
+            $('#btnHideText').click(function(){
+                $('h1').hide();
+            });
+            
+            $('#btnShowText').click(function(){
+                $('h1').show().css('color', 'black').css('font-size', '20px');
+            });
+            
+            $('#btnShowRedText').click(function(){
+                $('h1').show().css('color', 'red').css('font-size', '50px');
+            });
+            
+            $('#btnShowBlueText').click(function(){
+                $('h1').show().css('color', 'blue').css('font-size', '100px');
+            });
+            
+            $('#btnToggleText').click(function(){
+                $('h1').toggle();
+            });
+            
+            
+            
+            $('#btnHideImg').click(function(){
+                $('.img').hide();
+            });
+            
+            $('#btnShowImg400').click(function(){
+                $('.img').show().css('width', '400px');
+            });
+            
+            $('#btnShowImg600').click(function(){
+                $('.img').show().css('width', '600px');
+            });
+            
+            $('#btnToggleImg').click(function(){
+                $('.img').toggle();
+            });
+            
+            
+            
+            $('#btnHideSelf').click(function(){
+                var This = $('#btnHideSelf');
+                This.hide();
+            });
+            
+            $('#btnChangeSelf').click(function(){
+                var This = $('#btnChangeSelf');
+                This.css('background-color', '#FF0000');
+            });
+            
+            
+            
+            
+            $('#btnAjax').click(function(){
+                $('.ajaxData').text('AJAX data loading');
+                var time=5;
+                var timer = setInterval(function(){
+                    time--;
+                    $('.ajaxData').append(".");
+                    if(time==-1){
+                        clearInterval(timer);
+                        $('.ajaxData').text('');
+                        ajaxGetInfo();
+                    }
+                }, 500);
+            });
+            
+            function ajaxGetInfo(){
+                callAjax({
+                    method: 'post',
+                    url: 'ajax.post.txt',
+                    data: {name:'Nguyen', number:123456},
+                    done: function(response){
+                        $('.ajaxData').append(nl2br(response)).append('<hr>');
+                        
+                        callAjax({
+                            method: 'post',
+                            url: 'ajax.get.txt',
+                            done: function(response){
+                                $('.ajaxData').append(nl2br(response)).append('<hr>');
+                            }
+                       });
+                       
+                    },
+                    onload: function(){
+//                        console.log('Onload Event');
+                    },
+                    error: function(xhr, status, error){
+//                        console.log(xhr.statusText);
+                    },
+               });
+            }
+        });
+        </script>
+        
+    </body>
+</html>

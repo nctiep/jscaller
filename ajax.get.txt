@@ -1,0 +1,4 @@
+<h3>AJAX GET DATA</h3>
+Line 1: GET info 1
+Line 2: GET info 2
+Line 3: GET info 3
