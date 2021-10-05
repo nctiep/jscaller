@@ -67,6 +67,13 @@ $.prototype.click = function(callback) {
     return this;
 };
 
+$.prototype.scroll = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('wheel', callback, false);
+    });
+    return this;
+};
+
 $.prototype.ready = function(fn) {
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(fn, 100);
