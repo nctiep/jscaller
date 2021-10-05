@@ -74,6 +74,28 @@ $.prototype.scroll = function(callback) {
     return this;
 };
 
+$.prototype.scrollUp = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('wheel', function(event){
+            if (event.deltaY < 0){
+                callback(event);
+            }
+        }, false);
+    });
+    return this;
+};
+
+$.prototype.scrollDown = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('wheel', function(event){
+            if (event.deltaY > 0){
+                callback(event);
+            }
+        }, false);
+    });
+    return this;
+};
+
 $.prototype.ready = function(fn) {
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(fn, 100);

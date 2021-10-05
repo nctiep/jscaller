@@ -34,16 +34,12 @@
                 $('#containerScroll').append('<p>Mouse Scrolling</p>');
             });
             
-            $('#containerScrollUp').scroll(function(event){
-                if (event.deltaY < 0){
-                    $('#containerScrollUp').append('<p>Mouse Scrolling Up</p>');
-                }
+            $('#containerScrollUp').scrollUp(function(){
+                $('#containerScrollUp').append('<p>Mouse Scrolling Up</p>');
             });
             
-            $('#containerScrollDown').scroll(function(event){
-                if (event.deltaY > 0){
-                    $('#containerScrollDown').append('<p>Mouse Scrolling Down</p>');
-                }
+            $('#containerScrollDown').scrollDown(function(){
+                $('#containerScrollDown').append('<p>Mouse Scrolling Down</p>');
             });
             
         });
