@@ -67,6 +67,39 @@ $.prototype.click = function(callback) {
     return this;
 };
 
+$.prototype.dblclick = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('dblclick', callback, false);
+    });
+    return this;
+};
+
+$.prototype.contextmenu = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('contextmenu', callback, false);
+    });
+    return this;
+};
+
+$.prototype.mousedown = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('mousedown', callback, false);
+    });
+    return this;
+};
+
+$.prototype.dblrightclick = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('mousedown', function(event){
+            if (event.which==3 && event.detail == 2){
+                callback(event);
+            }
+            event.preventDefault();
+        }, false);
+    });
+    return this;
+};
+
 $.prototype.scroll = function(callback) {
     this.el.forEach(function(element) {
         element.addEventListener('wheel', callback, false);

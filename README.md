@@ -15,3 +15,12 @@ Javascript library
     + Scroll (Up & Down)
     + Scroll Up
     + Scroll Down
+
+## Mouse Click Event
+
+- URL: http://localhost/jscaller/mouseclick.html
+- Mouse Click Event:
+    + Click
+    + Double Click
+    + Right Click
+    + Double Right Click

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller mouseclick</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h2>Mouse Click Event</h2>
+        
+        <button type="button" id="btnMouseClickEvent" style="padding: 10px;">Mouse Click Event</button>
+        <div id="resultMouseClickEvent"></div>
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#btnMouseClickEvent')
+                .click(function(){
+                    $('#resultMouseClickEvent').append('<p>Click</p>');
+                })
+                .dblclick(function(){
+                    $('#resultMouseClickEvent').append('<p>Double Click</p>');
+                })
+                .contextmenu(function(e){
+                    $('#resultMouseClickEvent').append('<p>Right Click to open Context Menu</p>');
+                    e.preventDefault();
+                })
+                .dblrightclick(function(e){
+                    $('#resultMouseClickEvent').append('<p>Double Right Click</p>');
+                });
+            
+        });
+        </script>
+        
+    </body>
+</html>
