@@ -100,6 +100,18 @@ $.prototype.dblrightclick = function(callback) {
     return this;
 };
 
+$.prototype.numberrightclick = function(number, callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('mousedown', function(event){
+            if (event.which==3 && event.detail == number){
+                callback(event);
+            }
+            event.preventDefault();
+        }, false);
+    });
+    return this;
+};
+
 $.prototype.scroll = function(callback) {
     this.el.forEach(function(element) {
         element.addEventListener('wheel', callback, false);

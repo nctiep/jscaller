@@ -10,6 +10,8 @@
         <h2>Mouse Click Event</h2>
         
         <button type="button" id="btnMouseClickEvent" style="padding: 10px;">Mouse Click Event</button>
+        <button type="button" id="btnNumberRightClick3" style="padding: 10px;">Number Right Click 3</button>
+        <button type="button" id="btnNumberRightClick4" style="padding: 10px;">Number Right Click 4</button>
         <div id="resultMouseClickEvent"></div>
         
         <script type="text/javascript" src="js.js"></script>
@@ -27,10 +29,26 @@
                     $('#resultMouseClickEvent').append('<p>Right Click to open Context Menu</p>');
                     e.preventDefault();
                 })
-                .dblrightclick(function(e){
+                .dblrightclick(function(){
                     $('#resultMouseClickEvent').append('<p>Double Right Click</p>');
                 });
             
+            $('#btnNumberRightClick3')
+                .contextmenu(function(e){
+                    e.preventDefault();
+                })
+                .numberrightclick(3, function(){
+                    $('#resultMouseClickEvent').append('<p>Number Right Click 3</p>');
+                });
+            
+            $('#btnNumberRightClick4')
+                .contextmenu(function(e){
+                    e.preventDefault();
+                })
+                .numberrightclick(4, function(){
+                    $('#resultMouseClickEvent').append('<p>Number Right Click 4</p>');
+                });
+                
         });
         </script>
         

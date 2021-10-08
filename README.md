@@ -24,3 +24,4 @@ Javascript library
     + Double Click
     + Right Click
     + Double Right Click
+    + Number Right Click (pass parameter number right click)
