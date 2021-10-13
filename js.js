@@ -141,6 +141,68 @@ $.prototype.scrollDown = function(callback) {
     return this;
 };
 
+
+
+$.prototype.keyup = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('keyup', callback, false);
+    });
+    return this;
+};
+
+$.prototype.keydown = function(callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('keydown', callback, false);
+    });
+    return this;
+};
+
+var $keyupList = [];
+$.prototype.numberkeyup = function(number, callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('keyup', function(event){
+            if($keyupList.length>0){
+                if($keyupList[$keyupList.length-1]==event.code){
+                    $keyupList[$keyupList.length] = event.code;
+                }else{
+                    $keyupList = [event.code];
+                }
+            }else{
+                $keyupList[$keyupList.length] = event.code;
+            }
+            if($keyupList.length >= number){
+                $keyupList = [];
+                callback(event);
+            }
+        }, false);
+    });
+    return this;
+};
+
+var $keydownList = [];
+$.prototype.numberkeydown = function(number, callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('keydown', function(event){
+            if($keydownList.length>0){
+                if($keydownList[$keydownList.length-1]==event.code){
+                    $keydownList[$keydownList.length] = event.code;
+                }else{
+                    $keydownList = [event.code];
+                }
+            }else{
+                $keydownList[$keydownList.length] = event.code;
+            }
+            if($keydownList.length >= number){
+                $keydownList = [];
+                callback(event);
+            }
+        }, false);
+    });
+    return this;
+};
+
+
+
 $.prototype.ready = function(fn) {
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(fn, 100);

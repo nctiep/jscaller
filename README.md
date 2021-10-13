@@ -8,6 +8,7 @@ Javascript library
     + Username: admin
     + Password: 123456
 
+
 ## Mouse Event: Scroll
 
 - URL: http://localhost/jscaller/scroll.html
@@ -15,6 +16,7 @@ Javascript library
     + Scroll (Up & Down)
     + Scroll Up
     + Scroll Down
+
 
 ## Mouse Click Event
 
@@ -25,3 +27,11 @@ Javascript library
     + Right Click
     + Double Right Click
     + Number Right Click (pass parameter number right click)
+
+
+## Key Event
+
+- URL: http://localhost/jscaller/keyevent.html
+- Key Event:
+    + Keyup & Multi Keyup (pass parameter number keyup)
+    + Keyup & Multi Keydown (pass parameter number keydown)
