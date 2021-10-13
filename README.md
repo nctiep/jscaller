@@ -34,4 +34,4 @@ Javascript library
 - URL: http://localhost/jscaller/keyevent.html
 - Key Event:
     + Keyup & Multi Keyup (pass parameter number keyup)
-    + Keyup & Multi Keydown (pass parameter number keydown)
+    + Keydown & Multi Keydown (pass parameter number keydown)
