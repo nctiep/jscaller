@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller Delay</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h2>Delay Hide & Delay Show</h2>
+        
+        <button type="button" id="btnDelayHide" style="padding: 10px;">Hide Content for 2 seconds</button>
+        <button type="button" id="btnDelayShow" style="padding: 10px;">Show Content for 3 seconds</button>
+        
+        <br clear="all">
+        
+        <div class="content" style="float: left;width: 200px; height: 200px;background: red;margin: 20px;">
+            Content...
+        </div>
+        
+        <div class="content" style="float: left;width: 200px; height: 200px;background: blue;margin: 20px;">
+            Content...
+        </div>
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#btnDelayHide')
+                .click(function(){
+                    $('.content').delayhide(2000);
+                });
+            
+            $('#btnDelayShow')
+                .click(function(){
+                    $('.content').delayshow(3000);
+                });
+                
+        });
+        </script>
+        
+    </body>
+</html>

@@ -49,6 +49,26 @@ $.prototype.hide = function() {
     return this;
 }
 
+$.prototype.delayshow = function(milliseconds) {
+    var $this = this;
+    setTimeout(function(){
+        $this.el.forEach(function(element) {
+            element.style['display'] = '';
+        });
+    },milliseconds);
+    return this;
+}
+
+$.prototype.delayhide = function(milliseconds) {
+    var $this = this;
+    setTimeout(function(){
+        $this.el.forEach(function(element) {
+            element.style['display'] = 'none';
+        });
+    },milliseconds);
+    return this;
+}
+
 $.prototype.toggle = function() {
     this.el.forEach(function(element) {
         if (element.style.display === "none") {

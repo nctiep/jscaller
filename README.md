@@ -35,3 +35,9 @@ Javascript library
 - Key Event:
     + Keyup & Multi Keyup (pass parameter number keyup)
     + Keydown & Multi Keydown (pass parameter number keydown)
+
+
+## Delay Show/Hide
+
+- URL: http://localhost/jscaller/dalay.html
+- Delay Show & Delay Hide
