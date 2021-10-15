@@ -155,24 +155,6 @@ $.prototype.cntrightclick = function(number, callback) {
             }
             event.preventDefault();
         }, false);
-        
-        
-        
-//        element.addEventListener('keyup', function(event){
-//            if($keyupList.length>0){
-//                if($keyupList[$keyupList.length-1]==event.code){
-//                    $keyupList[$keyupList.length] = event.code;
-//                }else{
-//                    $keyupList = [event.code];
-//                }
-//            }else{
-//                $keyupList[$keyupList.length] = event.code;
-//            }
-//            if($keyupList.length >= number){
-//                $keyupList = [];
-//                callback(event);
-//            }
-//        }, false);
     });
     return this;
 };
