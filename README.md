@@ -27,6 +27,7 @@ Javascript library
     + Right Click
     + Double Right Click
     + Number Right Click (pass parameter number right click)
+    + Count Right Click (pass parameter number count right click)
 
 
 ## Key Event

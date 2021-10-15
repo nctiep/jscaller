@@ -132,6 +132,51 @@ $.prototype.numberrightclick = function(number, callback) {
     return this;
 };
 
+var $cntrightclickList = [];
+$.prototype.cntrightclick = function(number, callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('mousedown', function(event){
+            if(event.which==3){
+                if($cntrightclickList.length>0){
+                    if($cntrightclickList[$cntrightclickList.length-1]==event.currentTarget.id){
+                        $cntrightclickList[$cntrightclickList.length] = event.currentTarget.id;
+                    }else{
+                        $cntrightclickList = [event.currentTarget.id];
+                    }
+                }else{
+                    $cntrightclickList[$cntrightclickList.length] = event.currentTarget.id;
+                }
+            }else{
+                $cntrightclickList = [];
+            }
+            if($cntrightclickList.length >= number){
+                $cntrightclickList = [];
+                callback(event);
+            }
+            event.preventDefault();
+        }, false);
+        
+        
+        
+//        element.addEventListener('keyup', function(event){
+//            if($keyupList.length>0){
+//                if($keyupList[$keyupList.length-1]==event.code){
+//                    $keyupList[$keyupList.length] = event.code;
+//                }else{
+//                    $keyupList = [event.code];
+//                }
+//            }else{
+//                $keyupList[$keyupList.length] = event.code;
+//            }
+//            if($keyupList.length >= number){
+//                $keyupList = [];
+//                callback(event);
+//            }
+//        }, false);
+    });
+    return this;
+};
+
 $.prototype.scroll = function(callback) {
     this.el.forEach(function(element) {
         element.addEventListener('wheel', callback, false);

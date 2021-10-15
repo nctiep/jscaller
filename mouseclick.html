@@ -11,7 +11,8 @@
         
         <button type="button" id="btnMouseClickEvent" style="padding: 10px;">Mouse Click Event</button>
         <button type="button" id="btnNumberRightClick3" style="padding: 10px;">Number Right Click 3</button>
-        <button type="button" id="btnNumberRightClick4" style="padding: 10px;">Number Right Click 4</button>
+        <button type="button" id="btnCountRightClick4" style="padding: 10px;">Count Right Click 4</button>
+        <button type="button" id="btnCountRightClick5" style="padding: 10px;">Count Right Click 5</button>
         <div id="resultMouseClickEvent"></div>
         
         <script type="text/javascript" src="js.js"></script>
@@ -41,12 +42,22 @@
                     $('#resultMouseClickEvent').append('<p>Number Right Click 3</p>');
                 });
             
-            $('#btnNumberRightClick4')
+            $('#btnCountRightClick4')
                 .contextmenu(function(e){
+                    $('#resultMouseClickEvent').append('Right Click 4 ');
                     e.preventDefault();
                 })
-                .numberrightclick(4, function(){
-                    $('#resultMouseClickEvent').append('<p>Number Right Click 4</p>');
+                .cntrightclick(4, function(){
+                    $('#resultMouseClickEvent').append('<p>Count Right Click 4</p>');
+                });
+            
+            $('#btnCountRightClick5')
+                .contextmenu(function(e){
+                    $('#resultMouseClickEvent').append('Right Click 5 ');
+                    e.preventDefault();
+                })
+                .cntrightclick(5, function(){
+                    $('#resultMouseClickEvent').append('<p>Count Right Click 5</p>');
                 });
                 
         });
