@@ -42,3 +42,12 @@ Javascript library
 
 - URL: http://localhost/jscaller/dalay.html
 - Delay Show & Delay Hide
+
+
+## Set Properties
+
+- URL: http://localhost/jscaller/setprop.html
+- Properties
+    + setBgColor
+    + setSize
+    + setBorderRadius

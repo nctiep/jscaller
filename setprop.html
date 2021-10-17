@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller set properties</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div id="container">container</div>
+        
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#container')
+                .setBgColor('#FF0000')
+                .setSize({width:'500px', height:'300px'})
+                .setBorderRadius({topLeft:'10px', topRight:'50px', bottomLeft:'30px'});
+            
+        });
+        </script>
+        
+    </body>
+</html>
