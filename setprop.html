@@ -8,6 +8,7 @@
     <body>
         
         <div id="container">container</div>
+        <div id="container2">container 2</div>
         
         
         <script type="text/javascript" src="js.js"></script>
@@ -16,9 +17,13 @@
             
             $('#container')
                 .setBgColor('#FF0000')
-                .setSize({width:'500px', height:'300px'})
+                .setSize({width:'400px', height:'200px'})
                 .setBorderRadius({topLeft:'10px', topRight:'50px', bottomLeft:'30px'});
             
+            $('#container2')
+                .css('margin-top', '20px')
+                .setBgColor('#0000FF')
+                .setWidthHeight('400px', '200px')
         });
         </script>
         

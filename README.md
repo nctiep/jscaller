@@ -50,4 +50,5 @@ Javascript library
 - Properties
     + setBgColor
     + setSize
+    + setWidthHeight
     + setBorderRadius

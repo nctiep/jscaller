@@ -50,6 +50,14 @@ $.prototype.setSize = function(params) {
     return this;
 }
 
+$.prototype.setWidthHeight = function(width, height) {
+    this.el.forEach(function(element) {
+        element.style.width = width;
+        element.style.height = height;
+    });
+    return this;
+}
+
 $.prototype.setBorderRadius = function(params) {
     this.el.forEach(function(element) {
         element.style.borderTopLeftRadius = params.topLeft;
