@@ -52,3 +52,9 @@ Javascript library
     + setSize (multi version)
     + setWidthHeight
     + setBorderRadius
+
+
+## Multi Keypress
+
+- URL: http://localhost/jscaller/multikeypress.html
+- Multi Keypress within any keys
