@@ -290,6 +290,40 @@ $.prototype.numberkeydown = function(number, callback) {
 
 
 
+var keyPass = [];
+$.prototype.multikeypress = function(keyList, callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('keydown', function(event){
+            var faultAll = 0;
+            for(var i=0; i<keyList.length; i++){
+                keyPass[i] = typeof keyPass[i] != "undefined" ? keyPass[i] : 0;
+                if(event.keyCode==getKeyCodeByKeyName(keyList[i].toLowerCase())){
+                    keyPass[i] = 1;
+                }else{
+                    faultAll++;
+                }
+            }
+            if(faultAll>=keyList.length){
+                keyPass = [];
+            }
+            var sum = 0;
+            if(keyPass.length>0){
+                sum = keyPass.reduce(function(a, b) { return a + b; }, 0);
+            }
+//            console.log('keyCode:', event.keyCode+" - "+getKeyNameByKeyCode(event.keyCode));
+//            console.log('sum:'+sum+' - keyPass:',keyPass);
+            if(sum==keyList.length){
+                callback(event);
+                keyPass = [];
+            }
+            event.preventDefault();
+        }, false);
+    });
+    return this;
+};
+
+
+
 $.prototype.ready = function(fn) {
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(fn, 100);
@@ -340,3 +374,126 @@ function callAjax(params){
 function nl2br(str){
     return str.replace(/(?:\r\n|\r|\n)/g, '<br>');
 }
+
+
+
+function getKeyCodeByKeyName(name){
+    var result = '';
+    try {
+        result = allKeys[name];
+    } catch (error) {
+      console.error(error);
+    }
+    return result;
+}
+function getKeyNameByKeyCode(code){
+    var result = '';
+    try {
+        result = getKeyByValue(allKeys, code);
+    } catch (error) {
+      console.error(error);
+    }
+    return result;
+}
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+var allKeys = {
+    backspace	:8,
+    tab         :9,
+    enter	:13,
+    shift	:16,
+    ctrl	:17,
+    alt         :18,
+    pause	:19,
+    caps_lock	:20,
+    escape	:27,
+    page_up	:33,
+    space	:32,
+    page_down	:34,
+    end         :35,
+    home	:36,
+    arrow_left	:37,
+    arrow_up	:38,
+    arrow_right	:39,
+    arrow_down	:40,
+    print_screen:44,
+    insert	:45,
+    delete	:46,
+    0	:48,
+    1	:49,
+    2	:50,
+    3	:51,
+    4	:52,
+    5	:53,
+    6	:54,
+    7	:55,
+    8	:56,
+    9	:57,
+    a	:65,
+    b	:66,
+    c	:67,
+    d	:68,
+    e	:69,
+    f	:70,
+    g	:71,
+    h	:72,
+    i	:73,
+    j	:74,
+    k	:75,
+    l	:76,
+    m	:77,
+    n	:78,
+    o	:79,
+    p	:80,
+    q	:81,
+    r	:82,
+    s	:83,
+    t	:84,
+    u	:85,
+    v	:86,
+    w	:87,
+    x	:88,
+    y	:89,
+    z	:90,
+    select_key	:93,
+    numpad_0	:96,
+    numpad_1	:97,
+    numpad_2	:98,
+    numpad_3	:99,
+    numpad_4	:100,
+    numpad_5	:101,
+    numpad_6	:102,
+    numpad_7	:103,
+    numpad_8	:104,
+    numpad_9	:105,
+    multiply	:106,
+    add         :107,
+    subtract	:109,
+    decimal_point:110,
+    divide	:111,
+    f1	:112,
+    f2	:113,
+    f3	:114,
+    f4	:115,
+    f5	:116,
+    f6	:117,
+    f7	:118,
+    f8	:119,
+    f9	:120,
+    f10	:121,
+    f11	:122,
+    f12	:123,
+    num_lock	:144,
+    scroll_lock	:145,
+    semi_colon	:186,
+    equal_sign	:187,
+    comma	:188,
+    dash	:189,
+    period	:190,
+    forward_slash	:191,
+    open_bracket	:219,
+    back_slash          :220,
+    close_braket	:221,
+    single_quote	:222
+};
