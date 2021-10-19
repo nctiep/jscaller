@@ -49,6 +49,6 @@ Javascript library
 - URL: http://localhost/jscaller/setprop.html
 - Properties
     + setBgColor
-    + setSize
+    + setSize (multi version)
     + setWidthHeight
     + setBorderRadius
