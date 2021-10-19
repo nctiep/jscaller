@@ -42,11 +42,18 @@ $.prototype.setBgColor = function(color) {
     return this;
 }
 
-$.prototype.setSize = function(params) {
-    this.el.forEach(function(element) {
-        element.style.width = params.width;
-        element.style.height = params.height;
-    });
+$.prototype.setSize = function(params1, params2) {
+    if(params2==null){
+        this.el.forEach(function(element) {
+            element.style.width = params1.width;
+            element.style.height = params1.height;
+        });
+    }else{
+        this.el.forEach(function(element) {
+            element.style.width = params1;
+            element.style.height = params2;
+        });
+    }
     return this;
 }
 

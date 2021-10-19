@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller Key Event</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h2>Keyup Event & Keyup x3 Event</h2>
+        <textarea id="txtContentKeyup" style="width: 90%;height: 39px;"></textarea>
+        <div id="resultKeyup"></div>
+        
+        <h2>Keydown Event & Keydown x4 Event</h2>
+        <textarea id="txtContentKeydown" style="width: 90%;height: 39px;"></textarea>
+        <div id="resultKeydown"></div>
+        
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#txtContentKeyup')
+                .keyup(function(e){
+                    $('#resultKeyup').append(e.code+' ');
+                })
+                .numberkeyup(3, function(e){
+                    $('#resultKeyup').append('<b>'+e.code+'x3</b> ');
+                });
+            
+            $('#txtContentKeydown')
+                .keyup(function(e){
+                    $('#resultKeydown').append(e.code+' ');
+                })
+                .numberkeyup(4, function(e){
+                    $('#resultKeydown').append('<b>'+e.code+'x4</b> ');
+                });
+            
+        });
+        </script>
+        
+    </body>
+</html>
