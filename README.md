@@ -58,3 +58,9 @@ Javascript library
 
 - URL: http://localhost/jscaller/multikeypress.html
 - Multi Keypress within any keys
+
+
+## Demo timeout
+
+- URL: http://localhost/jscaller/demo_timeout.html
+- Click button --> delay 2s --> show content --> delay 1s --> hide content

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller Demo timeout</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h2>Demo Timeout</h2>
+        
+        <button type="button" id="btnAction" style="padding: 10px;">Action</button>
+        <div id="container" style="">Container</div>
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#container')
+                .css('margin-top', '20px')
+                .setBgColor('#FF0000')
+                .setSize({width:'200px', height:'200px'})
+                .hide();
+        
+            $('#btnAction')
+                .click(function(){
+                    setTimeout(function(){
+                        $('#container').show();
+                        setTimeout(function(){
+                            $('#container').hide();
+                        },1000);
+                    },2000);
+                });
+                
+        });
+        </script>
+        
+    </body>
+</html>
