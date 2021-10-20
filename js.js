@@ -294,6 +294,8 @@ var keyPass = [];
 $.prototype.multikeypress = function(keyList, callback) {
     this.el.forEach(function(element) {
         element.addEventListener('keydown', function(event){
+            if (event.currentTarget !== event.target) return;
+            
             var faultAll = 0;
             for(var i=0; i<keyList.length; i++){
                 keyPass[i] = typeof keyPass[i] != "undefined" ? keyPass[i] : 0;

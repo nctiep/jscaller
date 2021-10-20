@@ -57,7 +57,9 @@ Javascript library
 ## Multi Keypress
 
 - URL: http://localhost/jscaller/multikeypress.html
-- Multi Keypress within any keys
+- Multi Keypress:
+    + Within any keys
+    + Not apply children
 
 
 ## Demo timeout
