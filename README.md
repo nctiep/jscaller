@@ -74,3 +74,9 @@ Javascript library
 
 - URL: http://localhost/jscaller/demo_timeout.html
 - Click button --> delay 2s --> show content --> delay 1s --> hide content
+
+
+## Loop Realtime
+
+- URL: http://localhost/jscaller/loop_realtime.html
+- Loop [x] times each [y] miliseconds

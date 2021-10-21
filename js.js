@@ -89,23 +89,23 @@ $.prototype.hide = function() {
     return this;
 }
 
-$.prototype.delayshow = function(milliseconds) {
+$.prototype.delayshow = function(miliseconds) {
     var $this = this;
     setTimeout(function(){
         $this.el.forEach(function(element) {
             element.style['display'] = '';
         });
-    },milliseconds);
+    },miliseconds);
     return this;
 }
 
-$.prototype.delayhide = function(milliseconds) {
+$.prototype.delayhide = function(miliseconds) {
     var $this = this;
     setTimeout(function(){
         $this.el.forEach(function(element) {
             element.style['display'] = 'none';
         });
-    },milliseconds);
+    },miliseconds);
     return this;
 }
 
@@ -538,3 +538,13 @@ var allKeys = {
     close_braket	:221,
     single_quote	:222
 };
+
+
+
+function loopRealtime(count_loop, miliseconds, callback){
+    var cnt = count_loop;
+    var myLoop = setInterval(function(){
+        cnt--;callback();
+        if(cnt<=0) clearInterval(myLoop);
+    }, miliseconds);
+}

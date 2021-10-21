@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller Loop Realtime</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h2>Loop Realtime</h2>
+        
+        <button type="button" id="btnStart" style="padding: 10px;">Start</button>
+        <div id="result" style=""></div>
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+        
+            $('#btnStart')
+                .click(function(){
+                    loopRealtime(5, 2000, function(){
+                        $('#result').append('<p>Loop 5 times each 2 seconds</p>');
+                    });
+                });
+                
+        });
+        </script>
+        
+    </body>
+</html>
