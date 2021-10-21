@@ -62,6 +62,14 @@ Javascript library
     + Not apply children
 
 
+## Multi Keypress in order
+
+- URL: http://localhost/jscaller/multikeypress_inorder.html
+- Multi Keypress:
+    + Within any keys and press in order
+    + Not apply children
+
+
 ## Demo timeout
 
 - URL: http://localhost/jscaller/demo_timeout.html

@@ -312,11 +312,50 @@ $.prototype.multikeypress = function(keyList, callback) {
             if(keyPass.length>0){
                 sum = keyPass.reduce(function(a, b) { return a + b; }, 0);
             }
-//            console.log('keyCode:', event.keyCode+" - "+getKeyNameByKeyCode(event.keyCode));
-//            console.log('sum:'+sum+' - keyPass:',keyPass);
+//            console.log('keyCode:', event.keyCode+" - "+getKeyNameByKeyCode(event.keyCode)+' - sum:'+sum+' - keyPass:'+keyPass);
             if(sum==keyList.length){
                 callback(event);
                 keyPass = [];
+            }
+            event.preventDefault();
+        }, false);
+    });
+    return this;
+};
+
+
+
+var keyInOrderPass = [];
+$.prototype.multikeypress_inorder = function(keyList, callback) {
+    this.el.forEach(function(element) {
+        element.addEventListener('keydown', function(event){
+            if (event.currentTarget !== event.target) return;
+            
+            var sumOldKeyPass = keyInOrderPass.reduce(function(a, b) { return a + b; }, 0);
+            var i=0;
+            while (i<keyList.length){
+                keyInOrderPass[i] = typeof keyInOrderPass[i] != "undefined" ? keyInOrderPass[i] : 0;
+                if(event.keyCode==getKeyCodeByKeyName(keyList[i].toLowerCase())){
+                    keyInOrderPass[i] = 1;
+                    if(i>0 && keyInOrderPass[i-1]==0){
+                        keyInOrderPass[i] = 0;
+                    }
+                }
+                i++;
+            }
+            
+            var sum = 0;
+            if(keyInOrderPass.length>0){
+                sum = keyInOrderPass.reduce(function(a, b) { return a + b; }, 0);
+                if(sumOldKeyPass===sum){
+                    keyInOrderPass = [];
+                    sum = keyInOrderPass.reduce(function(a, b) { return a + b; }, 0);
+                }
+            }
+//            console.log('keyCode:', event.keyCode+" - "+getKeyNameByKeyCode(event.keyCode)+' - sum:'+sum+' - keyInOrderPass:'+keyInOrderPass);
+            if(sum==keyList.length){
+                callback(event);
+                keyInOrderPass = [];
             }
             event.preventDefault();
         }, false);
