@@ -12,7 +12,7 @@ Javascript library
 ## Mouse Event: Scroll
 
 - URL: http://localhost/jscaller/scroll.html
-- Mouse Event:
+- Ability:
     + Scroll (Up & Down)
     + Scroll Up
     + Scroll Down
@@ -21,7 +21,7 @@ Javascript library
 ## Mouse Click Event
 
 - URL: http://localhost/jscaller/mouseclick.html
-- Mouse Click Event:
+- Ability:
     + Click
     + Double Click
     + Right Click
@@ -33,7 +33,7 @@ Javascript library
 ## Key Event
 
 - URL: http://localhost/jscaller/keyevent.html
-- Key Event:
+- Ability:
     + Keyup & Multi Keyup (pass parameter number keyup)
     + Keydown & Multi Keydown (pass parameter number keydown)
 
@@ -57,7 +57,7 @@ Javascript library
 ## Multi Keypress
 
 - URL: http://localhost/jscaller/multikeypress.html
-- Multi Keypress:
+- Ability:
     + Within any keys
     + Not apply children
 
@@ -65,7 +65,7 @@ Javascript library
 ## Multi Keypress in order
 
 - URL: http://localhost/jscaller/multikeypress_inorder.html
-- Multi Keypress:
+- Ability:
     + Within any keys and press in order
     + Not apply children
 
@@ -80,3 +80,14 @@ Javascript library
 
 - URL: http://localhost/jscaller/loop_realtime.html
 - Loop [x] times each [y] miliseconds
+
+
+## Timer
+
+- URL: http://localhost/jscaller/timer.html
+- Ability:
+    + Start/Stop Timer
+    + Stop All Timer
+    + Count Timer
+    + Get Timer Id List
+    + Detroy All Timer

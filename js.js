@@ -2,12 +2,21 @@ var $ = function(selector) {
     if (! (this instanceof $) ) {
         return new $(selector);
     }
-    this.el = document.querySelectorAll(selector);
+    if(selector=='this'){
+        this.el = document.currentTarget;
+    }else{
+        this.el = document.querySelectorAll(selector);
+    }
+    
     return this;
 }
 
 $.prototype.val = function() {
     return this.el[0].value;
+}
+
+$.prototype.getAttr = function(attr) {
+    return this.el[0].getAttribute(attr);
 }
 
 $.prototype.focus = function() {
@@ -19,6 +28,17 @@ $.prototype.text = function(val) {
         element.innerHTML = val;
     });
     return this;
+}
+
+$.prototype.setText = function(val) {
+    this.el.forEach(function(element) {
+        element.innerHTML = val;
+    });
+    return this;
+}
+
+$.prototype.getText = function() {
+    return this.el[0].innerHTML;
 }
 
 $.prototype.append = function(val) {
@@ -547,4 +567,33 @@ function loopRealtime(count_loop, miliseconds, callback){
         cnt--;callback();
         if(cnt<=0) clearInterval(myLoop);
     }, miliseconds);
+}
+
+
+
+var $timerList = [];
+function setTimer(miliseconds, callback){
+    $timerList[$timerList.length] = setInterval(function(){
+        callback();
+    }, miliseconds);
+    return $timerList.length-1;
+}
+function clearTimer(index){
+    if(typeof index != "undefined"){
+        clearInterval($timerList[index]);
+    }else{
+        $timerList.forEach(function(element) {
+            clearInterval(element);
+        });
+    }
+}
+function getTimerList(){
+    return $timerList;
+}
+function getTimerLength(){
+    return $timerList.length;
+}
+function detroyTimerList(){
+    clearTimer();
+    $timerList = [];
 }
