@@ -36,6 +36,24 @@
             </fieldset>
         </div>
         
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>Countdown 1</legend>
+                <button type="button" id="btnStartTimer4" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer4" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer4" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>Countdown 2</legend>
+                <button type="button" id="btnStartTimer5" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer5" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer5" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
         
         <br clear="all"/>
         <br>
@@ -50,13 +68,13 @@
         <script type="text/javascript">
         docReady(function() {
             
-            var indexTimer1='',indexTimer2='',indexTimer3='';
+            var indexTimer1='', indexTimer2='', indexTimer3='', indexTimer4='', indexTimer5='';
             
             $('#btnStartTimer1')
                 .click(function(){
                     $('#btnStartTimer1').hide();
                     $('#btnStopTimer1').show();
-                    indexTimer1 = setTimer(1500, function(){
+                    indexTimer1 = setTimer(1500, 0, function(){
                         var t = $('#resultTimer1').getText();
                         $('#resultTimer1').text( parseInt(t)+1 );
                     });
@@ -75,7 +93,7 @@
                 .click(function(){
                     $('#btnStartTimer2').hide();
                     $('#btnStopTimer2').show();
-                    indexTimer2 = setTimer(1000, function(){
+                    indexTimer2 = setTimer(1000, 0, function(){
                         var t = $('#resultTimer2').getText();
                         $('#resultTimer2').text( parseInt(t)+1 );
                     });
@@ -94,7 +112,7 @@
                 .click(function(){
                     $('#btnStartTimer3').hide();
                     $('#btnStopTimer3').show();
-                    indexTimer3 = setTimer(500, function(){
+                    indexTimer3 = setTimer(500, 0, function(){
                         var t = $('#resultTimer3').getText();
                         $('#resultTimer3').text( parseInt(t)+1 );
                     });
@@ -108,6 +126,61 @@
                     clearTimer(indexTimer3);
                     totalInfo();
                 });
+                
+                
+                
+                
+            $('#btnStartTimer4')
+                .click(function(){
+                    $('#btnStartTimer4').hide();
+                    $('#btnStopTimer4').show();
+                    $('#resultTimer4').setText(6);
+                    indexTimer4 = setTimer(1000, 6, function(){
+                        var t = $('#resultTimer4').getText();
+                        $('#resultTimer4').text( parseInt(t)-1 );
+                    }, function(){
+                        stopTimer4();
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer4')
+                .click(function(){
+                    stopTimer4();
+                });
+            
+            function stopTimer4(){
+                $('#btnStartTimer4').show();
+                $('#btnStopTimer4').hide();
+                clearTimer(indexTimer4);
+                totalInfo();
+            }
+            
+            $('#btnStartTimer5')
+                .click(function(){
+                    $('#btnStartTimer5').hide();
+                    $('#btnStopTimer5').show();
+                    $('#resultTimer5').setText(10);
+                    indexTimer5 = setTimer(500, 10, function(){
+                        var t = $('#resultTimer5').getText();
+                        $('#resultTimer5').text( parseInt(t)-1 );
+                    }, function(){
+                        stopTimer5();
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer5')
+                .click(function(){
+                    stopTimer5();
+                });
+            
+            function stopTimer5(){
+                $('#btnStartTimer5').show();
+                $('#btnStopTimer5').hide();
+                clearTimer(indexTimer5);
+                totalInfo();
+            }
                 
                 
                 
@@ -137,6 +210,10 @@
                 $('#btnStopTimer2').hide();
                 $('#btnStartTimer3').show();
                 $('#btnStopTimer3').hide();
+                $('#btnStartTimer4').show();
+                $('#btnStopTimer4').hide();
+                $('#btnStartTimer5').show();
+                $('#btnStopTimer5').hide();
             }
             
         });

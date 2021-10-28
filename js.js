@@ -572,9 +572,16 @@ function loopRealtime(count_loop, miliseconds, callback){
 
 
 var $timerList = [];
-function setTimer(miliseconds, callback){
-    $timerList[$timerList.length] = setInterval(function(){
+function setTimer(miliseconds, count_loop, callback, callback2){
+    var isCountDown = count_loop>0?true:false;
+    var cnt = count_loop;
+    var myLoop = $timerList[$timerList.length] = setInterval(function(){
+        if(isCountDown==true) cnt--;
         callback();
+        if(isCountDown==true && cnt<=0){
+            clearInterval(myLoop);
+            callback2();
+        }
     }, miliseconds);
     return $timerList.length-1;
 }
