@@ -605,9 +605,16 @@ function detroyTimerList(){
     $timerList = [];
 }
 function checkTimerId(id){
-    if(typeof id != "undefined" && id!=''){
-        return $timerList.indexOf(parseInt(id))>=0;
-    }else{
+    id = id.trim();
+    if(typeof id === "undefined" || id==''){
         return getTimerList();
     }
+    if(isInt(id)){
+        return $timerList.indexOf(parseInt(id))>=0;
+    }
+    return false;
+}
+function isInt(value) {
+    var x = parseFloat(value);
+    return !isNaN(value) && (x | 0) === x;
 }
