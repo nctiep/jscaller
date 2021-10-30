@@ -92,3 +92,4 @@ Javascript library
     + Get Timer Id List
     + Detroy All Timer
     + Countdown Timer
+    + Check Timer Id exists

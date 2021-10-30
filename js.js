@@ -604,3 +604,10 @@ function detroyTimerList(){
     clearTimer();
     $timerList = [];
 }
+function checkTimerId(id){
+    if(typeof id != "undefined" && id!=''){
+        return $timerList.indexOf(parseInt(id))>=0;
+    }else{
+        return getTimerList();
+    }
+}

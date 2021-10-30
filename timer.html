@@ -63,6 +63,15 @@
         <br><br>Count timer: <span id="cntTimer">0</span>
         <br>Timer Id list: <span id="timerList"></span>
         
+        <hr>
+        
+        <h2>Timer ID Check</h2>
+        
+        <input type="text" id="txtTimerId" style="padding: 10px;"/>
+        <button type="button" id="btnTimerCheck" style="padding: 10px;">Timer check</button>
+        <br>* Check null id ==> list all id exists
+        <br><br>Result Timer check: <span id="resultCheck"></span>
+        
         
         <script type="text/javascript" src="js.js"></script>
         <script type="text/javascript">
@@ -216,6 +225,13 @@
                 $('#btnStopTimer5').hide();
             }
             
+            
+            
+            $('#btnTimerCheck')
+                .click(function(){
+                    var id = $('#txtTimerId').val();
+                    $('#resultCheck').setText( checkTimerId(id) );
+                });
         });
         </script>
         
