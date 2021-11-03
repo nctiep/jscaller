@@ -610,11 +610,91 @@ function checkTimerId(id){
         return getTimerList();
     }
     if(isInt(id)){
-        return $timerList.indexOf(parseInt(id))>=0;
+        return $timerList.indexOf(id)>=0;
     }
     return false;
 }
 function isInt(value) {
     var x = parseFloat(value);
     return !isNaN(value) && (x | 0) === x;
+}
+
+
+
+var $timerNameList = [];
+function setTimerName(timerName, miliseconds, count_loop, callback, callback2){
+    var isCountDown = count_loop>0?true:false;
+    var cnt = count_loop;
+    var myLoop = setInterval(function(){
+        if(isCountDown==true) cnt--;
+        callback();
+        if(isCountDown==true && cnt<=0){
+            clearInterval(myLoop);
+            callback2();
+        }
+    }, miliseconds);
+    var obj = {id:myLoop, name:timerName};
+    $timerNameList[$timerNameList.length] = obj;
+    return obj;
+}
+function clearTimerById(id){
+    if(typeof id != "undefined"){
+        clearInterval(id);
+        for (var i=0; i<$timerNameList.length; i++){
+            if($timerNameList[i].id==id){
+                $timerNameList.splice(i, 1);
+                return false;
+            }
+        };
+    }else{
+        $timerNameList.forEach(function(element) {
+            clearInterval(element.id);
+        });
+        $timerNameList = [];
+    }
+}
+function clearTimerByName(name){
+    if(typeof name != "undefined"){
+        for (var i=0; i<$timerNameList.length; i++){
+            if($timerNameList[i].name==name){
+                clearInterval($timerNameList[i].id);
+                $timerNameList.splice(i, 1);
+                return false;
+            }
+        };
+    }else{
+        $timerNameList.forEach(function(element) {
+            clearInterval(element.id);
+        });
+        $timerNameList = [];
+    }
+}
+function getTimerNameList(){
+    var r = [];
+    $timerNameList.forEach(function(element) {
+        r[r.length] = element.name;
+    });
+    return r;
+}
+function getTimerNameLength(){
+    return $timerNameList.length;
+}
+function detroyTimerNameList(){
+    clearTimerById();
+    $timerNameList = [];
+}
+function checkTimerNameByName(name){
+    name = name.trim();
+    if(typeof name === "undefined" || name==''){
+        return getTimerNameList();
+    }else{
+        var isExist = false;
+        $timerNameList.forEach(function(element) {
+            if(element.name==name){
+                isExist = true;
+            }
+        });
+        return isExist;
+    }
+    return false;
 }

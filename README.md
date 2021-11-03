@@ -93,3 +93,16 @@ Javascript library
     + Detroy All Timer
     + Countdown Timer
     + Check Timer Id exists
+
+
+## Timer Using Name
+
+- URL: http://localhost/jscaller/timer-by-name.html
+- Ability:
+    + Start/Stop Timer by name
+    + Stop All Timer
+    + Count Timer
+    + Get Timer Name List
+    + Detroy All Timer
+    + Countdown Timer
+    + Check Timer exists by name

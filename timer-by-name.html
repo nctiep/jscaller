@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jscaller Timer using name</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h2>Timer</h2>
+        
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>timer_1</legend>
+                <button type="button" id="btnStartTimer1" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer1" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer1" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>timer_2</legend>
+                <button type="button" id="btnStartTimer2" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer2" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer2" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>timer_3</legend>
+                <button type="button" id="btnStartTimer3" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer3" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer3" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>countdown_1</legend>
+                <button type="button" id="btnStartTimer4" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer4" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer4" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
+        <div style="float: left;width: 150px;">
+            <fieldset style="text-align: center;">
+                <legend>countdown_2</legend>
+                <button type="button" id="btnStartTimer5" style="padding: 10px;">Start</button>
+                <button type="button" id="btnStopTimer5" style="padding: 10px;display: none;">STOP</button>
+                <div id="resultTimer5" style="margin-top: 10px;">0</div>
+            </fieldset>
+        </div>
+        
+        
+        <br clear="all"/>
+        <br>
+        <button type="button" id="btnStopAllTimer" style="padding: 10px;">Stop All Timer</button>
+        <button type="button" id="btnDetroyTimerList" style="padding: 10px;">Detroy All Timer</button>
+        
+        <br><br>Count timer: <span id="cntTimer">0</span>
+        <br>Timer Name list: <span id="timerList"></span>
+        
+        <hr>
+        
+        <h2>Timer Name Check</h2>
+        
+        <input type="text" id="txtTimerName" style="padding: 10px;"/>
+        <button type="button" id="btnTimerCheck" style="padding: 10px;">Timer name check</button>
+        <br>* Check null name ==> list all name exists
+        <br><br>Result Timer name check: <span id="resultCheck"></span>
+        
+        
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript">
+        docReady(function() {
+            
+            $('#btnStartTimer1')
+                .click(function(){
+                    $('#btnStartTimer1').hide();
+                    $('#btnStopTimer1').show();
+                    setTimerName('timer_1', 1500, 0, function(){
+                        var t = $('#resultTimer1').getText();
+                        $('#resultTimer1').text( parseInt(t)+1 );
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer1')
+                .click(function(){
+                    $('#btnStartTimer1').show();
+                    $('#btnStopTimer1').hide();
+                    clearTimerByName('timer_1');
+                    totalInfo();
+                });
+            
+            $('#btnStartTimer2')
+                .click(function(){
+                    $('#btnStartTimer2').hide();
+                    $('#btnStopTimer2').show();
+                    setTimerName('timer_2', 1000, 0, function(){
+                        var t = $('#resultTimer2').getText();
+                        $('#resultTimer2').text( parseInt(t)+1 );
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer2')
+                .click(function(){
+                    $('#btnStartTimer2').show();
+                    $('#btnStopTimer2').hide();
+                    clearTimerByName('timer_2');
+                    totalInfo();
+                });
+                
+            $('#btnStartTimer3')
+                .click(function(){
+                    $('#btnStartTimer3').hide();
+                    $('#btnStopTimer3').show();
+                    setTimerName('timer_3', 500, 0, function(){
+                        var t = $('#resultTimer3').getText();
+                        $('#resultTimer3').text( parseInt(t)+1 );
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer3')
+                .click(function(){
+                    $('#btnStartTimer3').show();
+                    $('#btnStopTimer3').hide();
+                    clearTimerByName('timer_3');
+                    totalInfo();
+                });
+                
+                
+                
+                
+            $('#btnStartTimer4')
+                .click(function(){
+                    $('#btnStartTimer4').hide();
+                    $('#btnStopTimer4').show();
+                    $('#resultTimer4').setText(6);
+                    setTimerName('countdown_1', 1000, 6, function(){
+                        var t = $('#resultTimer4').getText();
+                        $('#resultTimer4').text( parseInt(t)-1 );
+                    }, function(){
+                        stopTimer4();
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer4')
+                .click(function(){
+                    stopTimer4();
+                });
+            
+            function stopTimer4(){
+                $('#btnStartTimer4').show();
+                $('#btnStopTimer4').hide();
+                clearTimerByName('countdown_1');
+                totalInfo();
+            }
+            
+            $('#btnStartTimer5')
+                .click(function(){
+                    $('#btnStartTimer5').hide();
+                    $('#btnStopTimer5').show();
+                    $('#resultTimer5').setText(10);
+                    setTimerName('countdown_2', 500, 10, function(){
+                        var t = $('#resultTimer5').getText();
+                        $('#resultTimer5').text( parseInt(t)-1 );
+                    }, function(){
+                        stopTimer5();
+                    });
+                    totalInfo();
+                });
+                
+            $('#btnStopTimer5')
+                .click(function(){
+                    stopTimer5();
+                });
+            
+            function stopTimer5(){
+                $('#btnStartTimer5').show();
+                $('#btnStopTimer5').hide();
+                clearTimerByName('countdown_2');
+                totalInfo();
+            }
+                
+                
+                
+            $('#btnStopAllTimer')
+                .click(function(){
+                    turnOnAllStartButton();
+                    clearTimerByName();
+                    totalInfo();
+                });
+                
+            $('#btnDetroyTimerList')
+                .click(function(){
+                    turnOnAllStartButton();
+                    detroyTimerNameList();
+                    totalInfo();
+                });
+            
+            function totalInfo(){
+                $('#cntTimer').text(getTimerNameLength());
+                $('#timerList').text(getTimerNameList());
+            }
+            
+            function turnOnAllStartButton(){
+                $('#btnStartTimer1').show();
+                $('#btnStopTimer1').hide();
+                $('#btnStartTimer2').show();
+                $('#btnStopTimer2').hide();
+                $('#btnStartTimer3').show();
+                $('#btnStopTimer3').hide();
+                $('#btnStartTimer4').show();
+                $('#btnStopTimer4').hide();
+                $('#btnStartTimer5').show();
+                $('#btnStopTimer5').hide();
+            }
+            
+            
+            
+            $('#btnTimerCheck')
+                .click(function(){
+                    var name = $('#txtTimerName').val();
+                    $('#resultCheck').setText( checkTimerNameByName(name) );
+                });
+        });
+        </script>
+        
+    </body>
+</html>
