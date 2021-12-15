@@ -9,6 +9,7 @@
         
         <div id="container">container</div>
         <div id="container2">container 2</div>
+        <button type="button" id="btnEditWidth" style="padding: 10px;margin: 10px;">Edit Width</button>
         
         
         <script type="text/javascript" src="js.js"></script>
@@ -23,7 +24,13 @@
             $('#container2')
                 .css('margin-top', '20px')
                 .setBgColor('#0000FF')
-                .setSize('400px', '200px')
+                .setSize('400px', '200px');
+            
+            $('#btnEditWidth')
+                .click(function(){
+                    $('#container2')
+                        .setSize('600px');
+                });
         });
         </script>
         

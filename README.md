@@ -52,6 +52,7 @@ Javascript library
     + setSize (multi version)
     + setWidthHeight
     + setBorderRadius
+    + Edit width use setSize
 
 
 ## Multi Keypress

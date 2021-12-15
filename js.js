@@ -64,10 +64,16 @@ $.prototype.setBgColor = function(color) {
 
 $.prototype.setSize = function(params1, params2) {
     if(params2==null){
-        this.el.forEach(function(element) {
-            element.style.width = params1.width;
-            element.style.height = params1.height;
-        });
+        if(typeof params1 === 'object'){
+            this.el.forEach(function(element) {
+                element.style.width = params1.width;
+                element.style.height = params1.height;
+            });
+        }else{//edit width
+            this.el.forEach(function(element) {
+                element.style.width = params1;
+            });
+        }
     }else{
         this.el.forEach(function(element) {
             element.style.width = params1;
@@ -80,6 +86,20 @@ $.prototype.setSize = function(params1, params2) {
 $.prototype.setWidthHeight = function(width, height) {
     this.el.forEach(function(element) {
         element.style.width = width;
+        element.style.height = height;
+    });
+    return this;
+}
+
+$.prototype.setWidth = function(width) {
+    this.el.forEach(function(element) {
+        element.style.width = width;
+    });
+    return this;
+}
+
+$.prototype.setHeight = function(height) {
+    this.el.forEach(function(element) {
         element.style.height = height;
     });
     return this;
